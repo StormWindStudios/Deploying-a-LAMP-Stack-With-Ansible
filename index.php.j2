@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <title> Welcome to {{ inventory_hostname }} </title>
+  </head>
+  <body>
+    <?php 
+      echo "<h1> Welcome to {{ inventory_hostname }} </h1> <br>";
+      echo "<h3> It is a terrible " . date("l") . "! <br>";
+    ?>
+  </body>
+</html> 

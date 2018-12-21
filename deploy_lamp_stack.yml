@@ -1,0 +1,54 @@
+# Three dashes marks the beginning of a YAML file
+---
+
+# Define hosts to configure, "become" sudo
+- hosts: servers
+  become: yes
+  tasks:
+
+# Use the YUM module to install the LAMP stack components
+  - name : Install Apache, PHP components, MariaDB, and firewalld
+    yum:
+      name:
+        - httpd
+        - php
+        - php-mysql
+        - mariadb
+        - mariadb-server
+        - firewalld
+      state: present
+
+# Use the SYSTEMD module to start and enable the LAMP stack components
+  - name: Start and Enable Apache, MariaDB, and firewalld
+    systemd:
+      state: started
+      enabled: true
+      name: "{{ item }}"
+    with_items:
+      - 'httpd'
+      - 'mariadb'
+      - 'firewalld'
+
+# Use the FIREWALLD module open HTTP, SSH and HTTPS ports on the server
+  - name: Open HTTP and HTTPS ports on firewall
+    firewalld:
+      state: enabled
+      permanent: true
+      immediate: true
+      service: "{{ item }}"
+    with_items:
+      - 'http'
+      - 'https'
+      - 'ssh'
+
+# Use the TEMPLATE module to create a simple index.html file
+  - name: Copy index.html to server
+    template:
+      src: index.php.j2
+      dest: /var/www/html/index.php
+      owner: apache
+      group: apache
+      mode: 0644
+
+# Three periods marks the end of a YAML file
+...
