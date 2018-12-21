@@ -44,8 +44,17 @@
 # Use the TEMPLATE module to create a simple index.html file
   - name: Copy index.html to server
     template:
-      src: index.php.j2
+      src: files/index.php.j2
       dest: /var/www/html/index.php
+      owner: apache
+      group: apache
+      mode: 0644
+
+# Use the COPY module to copy an image to the web server directory
+  - name: Copy internet_guardian.jpeg to /var/www/html/
+    copy:
+      src: files/internet_guardian.jpeg
+      dest: /var/www/html/internet_guardian.jpeg
       owner: apache
       group: apache
       mode: 0644

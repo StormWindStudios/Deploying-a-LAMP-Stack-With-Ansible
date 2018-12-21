@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title> Welcome to {{ inventory_hostname }} </title>
+  </head>
+  <body>
+    <?php 
+      echo "<h1> Welcome to {{ inventory_hostname }} </h1>";
+      echo "<h3> It is a good " . date("l") . " to be guarding the Interwebz!<br>";
+      echo "<img src='internet_guardian.jpeg' alt='Aurora the Cat'>";
+    ?>
+  </body>
+</html> 
