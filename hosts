@@ -1,2 +1,0 @@
-[servers]
-Ansi  ansible_host=104.248.183.37 ansible_user=ansible ansible_sudo_pass=ansible ansible_private_key_file=../Keys/ansible_test_key
