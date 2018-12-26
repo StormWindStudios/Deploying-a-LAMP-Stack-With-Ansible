@@ -41,7 +41,7 @@
       - 'https'
       - 'ssh'
 
-# Use the TEMPLATE module to create a simple index.html file
+# Use the TEMPLATE module to create a simple index.php file
   - name: Copy index.html to server
     template:
       src: files/index.php.j2
