@@ -1,0 +1,2 @@
+[servers]
+ansi anible_host=10.0.0.1 ansible_user=ansible 
